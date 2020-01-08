@@ -43,6 +43,7 @@ def get_list_of_files():
 
 
 hostname = 'https://master.apis.dev.openstreetmap.org'
+# hostname = 'https://api.openstreetmap.org'
 
 current_session = get_session()
 
