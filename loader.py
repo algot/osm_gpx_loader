@@ -2,7 +2,7 @@ import requests
 import os
 from dotenv import load_dotenv
 
-input_dir = '/input/'
+input_dir = 'input'
 
 
 def get_track_details(session, track_id):
@@ -38,8 +38,7 @@ def print_list_of_files(filelist):
 
 
 def get_list_of_gpx_files():
-    filelist = os.listdir('.' + input_dir)
-
+    filelist = os.listdir(input_dir)
     gpx_tracks = list(filter(lambda x: '.gpx' in x, filelist))
     return gpx_tracks
 
@@ -54,7 +53,7 @@ files = get_list_of_gpx_files()
 for file in files:
     print('Loading track: ' + file)
     current_loaded_track_id = post_gpx(current_session, '.' + input_dir + file)
-    print('track' + file + 'loaded')
+    print('track' + file + ' loaded')
     print('TrackId: ' + current_loaded_track_id)
     get_track_details(current_session, current_loaded_track_id)
     print('++++++++++++++++++++++++')
