@@ -5,14 +5,6 @@ from dotenv import load_dotenv
 input_dir = 'input'
 
 
-def get_track_details(session, track_id):
-    details_path = f'/api/0.6/gpx/{track_id}/details'
-    response = session.get(hostname + details_path)
-    content = response.content
-    content = content.decode('utf8')
-    print(content)
-
-
 def get_session():
     load_dotenv()
     password = os.getenv('PASSWORD')
@@ -40,10 +32,12 @@ def post_gpx(session, path_to_gpx_file):
         raise ConnectionError('Error occured: ' + str(response_post.status_code))
 
 
-def print_list_of_files(filelist):
-    print('Number of tracks: ' + str(len(filelist)))
-    print('List of files in track directory: \n')
-    print('\n'.join(filelist))
+def get_track_details(session, track_id):
+    details_path = f'/api/0.6/gpx/{track_id}/details'
+    response = session.get(hostname + details_path)
+    content = response.content
+    content = content.decode('utf8')
+    print(content)
 
 
 def get_list_of_gpx_files():
@@ -52,8 +46,15 @@ def get_list_of_gpx_files():
     return gpx_tracks
 
 
-hostname = 'https://master.apis.dev.openstreetmap.org'
+def print_list_of_files(filelist):
+    print('Number of tracks: ' + str(len(filelist)))
+    print('List of files in track directory: \n')
+    print('\n'.join(filelist))
+
+
+hostname = 'https://mastera.apis.dev.openstreetmap.org'
 # hostname = 'https://api.openstreetmap.org'
+
 
 current_session = get_session()
 
