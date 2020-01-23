@@ -52,8 +52,8 @@ def print_list_of_files(filelist):
     print('\n'.join(filelist))
 
 
-hostname = 'https://master.apis.dev.openstreetmap.org'
-# hostname = 'https://api.openstreetmap.org'
+# hostname = 'https://master.apis.dev.openstreetmap.org'
+hostname = 'https://api.openstreetmap.org'
 
 
 current_session = get_session()
