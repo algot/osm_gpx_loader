@@ -29,7 +29,7 @@ def post_gpx(session, path_to_gpx_file):
     elif response_post.status_code == 403:
         raise ConnectionError('Forbidden error (403)')
     else:
-        raise ConnectionError('Error occured: ' + str(response_post.status_code))
+        raise ConnectionError('Error occurred: ' + str(response_post.status_code))
 
 
 def get_track_details(session, track_id):
