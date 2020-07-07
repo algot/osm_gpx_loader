@@ -1,4 +1,3 @@
-import os
 import osm_api_helper
 import file_helper
 
@@ -8,5 +7,5 @@ def main():
     file_helper.upload(osm_helper)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

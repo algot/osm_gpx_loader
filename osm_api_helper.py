@@ -31,9 +31,10 @@ class OsmApiHelper:
             raise ConnectionError('Authorization error (401)')
         elif response_post.status_code == 403:
             raise ConnectionError('Forbidden error (403)')
+        elif response_post.status_code == 503:
+            raise ConnectionError('Service Unavailable (503) \n' + response_post.content.decode('utf-8'))
         else:
-            raise ConnectionError('Error occurred: ' +
-                                  str(response_post.status_code))
+            raise ConnectionError('Error occurred: ' + str(response_post.status_code))
 
     def get_track_details(self, session, track_id):
         details_path = f'/api/0.6/gpx/{track_id}/details'
