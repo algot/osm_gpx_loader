@@ -7,9 +7,9 @@ class OsmApiHelper:
 
     def __init__(self):
         load_dotenv()
-        self.hostname = os.getenv('HOSTNAME')
-        self.username = os.getenv('USERNAME')
-        self.password = os.getenv('PASSWORD')
+        self.hostname = os.getenv('OSM_HOSTNAME')
+        self.username = os.getenv('OSM_USERNAME')
+        self.password = os.getenv('OSM_PASSWORD')
 
         auth_session = requests.session()
         auth_session.auth = (self.username, self.password)
@@ -35,10 +35,3 @@ class OsmApiHelper:
             raise ConnectionError('Service Unavailable (503) \n' + response_post.content.decode('utf-8'))
         else:
             raise ConnectionError('Error occurred: ' + str(response_post.status_code))
-
-    def get_track_details(self, session, track_id):
-        details_path = f'/api/0.6/gpx/{track_id}/details'
-        response = session.get(self.hostname + details_path)
-        content = response.content
-        content = content.decode('utf8')
-        print(content)
