@@ -16,7 +16,6 @@ def upload(osm_helper):
 
         print('Track loaded')
         print('TrackId:', current_loaded_track_id)
-        print_color_text(80 * '-')
         tracks_uploaded += 1
 
     return tracks_uploaded
