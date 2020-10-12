@@ -15,7 +15,7 @@ class OsmApiHelper:
         params = {
             'description': 'imported track',
             'tags': 'import',
-            'visibility': 'trackable',
+            'visibility': 'identifiable',
         }
 
         response_post = self.session.post(
